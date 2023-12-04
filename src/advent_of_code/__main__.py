@@ -3,6 +3,7 @@ import pathlib
 import click
 
 import advent_of_code.twentytwentythree.dayone
+import advent_of_code.twentytwentythree.daythree
 import advent_of_code.twentytwentythree.daytwo
 
 
@@ -47,6 +48,26 @@ def daytwo(ctx):
 
     p = advent_of_code.twentytwentythree.daytwo.PuzzleTwo(
         pathlib.Path("data/2023/2/input.txt")
+    )
+
+    result = p.run()
+
+    print(f"puzzle two: {result}")
+
+
+@twentytwentythree.command()
+@click.pass_context
+def daythree(ctx):
+    p = advent_of_code.twentytwentythree.daythree.PuzzleOne(
+        pathlib.Path("data/2023/3/input.txt")
+    )
+
+    result = p.run()
+
+    print(f"puzzle one: {result}")
+
+    p = advent_of_code.twentytwentythree.daythree.PuzzleTwo(
+        pathlib.Path("data/2023/3/input.txt")
     )
 
     result = p.run()
