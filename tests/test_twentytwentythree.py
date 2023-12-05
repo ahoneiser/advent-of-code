@@ -8,7 +8,6 @@ def test_dayOne_puzzleOne():
 
     assert p.run() == 142
 
-
 def test_dayOne_puzzleTwo():
     p = dayone.PuzzleTwo(pathlib.Path("data/2023/1/b-example-input.txt"))
 

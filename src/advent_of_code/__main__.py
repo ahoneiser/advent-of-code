@@ -1,79 +1,49 @@
 import pathlib
 
-import click
+from advent_of_code.twentytwentythree import dayone, daythree, daytwo
 
-import advent_of_code.twentytwentythree.dayone
-import advent_of_code.twentytwentythree.daythree
-import advent_of_code.twentytwentythree.daytwo
+p = dayone.PuzzleOne(
+    pathlib.Path("data/2023/1/input.txt")
+)
 
+print(f"puzzle one: {p.run()}")
 
-@click.group()
-@click.pass_context
-def cli(ctx):
-    pass
+p = dayone.PuzzleTwo(
+    pathlib.Path("data/2023/1/input.txt")
+)
 
-
-@cli.group()
-@click.pass_context
-def twentytwentythree(ctx):
-    pass
+print(f"puzzle two: {p.run()}")
 
 
-@twentytwentythree.command()
-@click.pass_context
-def dayone(ctx):
-    p = advent_of_code.twentytwentythree.dayone.PuzzleOne(
-        pathlib.Path("data/2023/1/input.txt")
-    )
+p = daytwo.PuzzleOne(
+    pathlib.Path("data/2023/2/input.txt")
+)
 
-    print(f"puzzle one: {p.run()}")
+result = p.run()
 
-    p = advent_of_code.twentytwentythree.dayone.PuzzleTwo(
-        pathlib.Path("data/2023/1/input.txt")
-    )
+print(f"puzzle one: {result}")
 
-    print(f"puzzle two: {p.run()}")
+p = daytwo.PuzzleTwo(
+    pathlib.Path("data/2023/2/input.txt")
+)
 
+result = p.run()
 
-@twentytwentythree.command()
-@click.pass_context
-def daytwo(ctx):
-    p = advent_of_code.twentytwentythree.daytwo.PuzzleOne(
-        pathlib.Path("data/2023/2/input.txt")
-    )
-
-    result = p.run()
-
-    print(f"puzzle one: {result}")
-
-    p = advent_of_code.twentytwentythree.daytwo.PuzzleTwo(
-        pathlib.Path("data/2023/2/input.txt")
-    )
-
-    result = p.run()
-
-    print(f"puzzle two: {result}")
+print(f"puzzle two: {result}")
 
 
-@twentytwentythree.command()
-@click.pass_context
-def daythree(ctx):
-    p = advent_of_code.twentytwentythree.daythree.PuzzleOne(
-        pathlib.Path("data/2023/3/input.txt")
-    )
+p = daythree.PuzzleOne(
+    pathlib.Path("data/2023/3/input.txt")
+)
 
-    result = p.run()
+result = p.run()
 
-    print(f"puzzle one: {result}")
+print(f"puzzle one: {result}")
 
-    p = advent_of_code.twentytwentythree.daythree.PuzzleTwo(
-        pathlib.Path("data/2023/3/input.txt")
-    )
+p = daythree.PuzzleTwo(
+    pathlib.Path("data/2023/3/input.txt")
+)
 
-    result = p.run()
+result = p.run()
 
-    print(f"puzzle two: {result}")
-
-
-if __name__ == "__main__":
-    cli(obj={})
+print(f"puzzle two: {result}")

@@ -2,10 +2,7 @@ import math
 import re
 import sys
 
-
-class Puzzle:
-    def __init__(self, fh):
-        self._fh = fh
+from . import Puzzle
 
 
 class PuzzleOne(Puzzle):
