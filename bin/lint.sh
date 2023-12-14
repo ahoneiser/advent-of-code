@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATHS=(src)
+PATHS=(src tests)
 
 for P in ${PATHS[@]}; do
   isort $P
