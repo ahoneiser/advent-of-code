@@ -1,6 +1,6 @@
 import pathlib
 
-from advent_of_code.twentytwentythree import dayfour, dayone, daythree, daytwo
+from advent_of_code.twentytwentythree import dayfive, dayfour, dayone, daythree, daytwo
 
 p = dayone.PuzzleOne(pathlib.Path("data/2023/1/input.txt"))
 
@@ -43,6 +43,18 @@ result = p.run()
 print(f"puzzle one: {result}")
 
 p = dayfour.PuzzleTwo(pathlib.Path("data/2023/4/input.txt"))
+
+result = p.run()
+
+print(f"puzzle two: {result}")
+
+p = dayfive.PuzzleOne(pathlib.Path("data/2023/5/input.txt"))
+
+result = p.run()
+
+print(f"puzzle one: {result}")
+
+p = dayfive.PuzzleTwo(pathlib.Path("data/2023/5/input.txt"))
 
 result = p.run()
 

@@ -1,6 +1,6 @@
 import pathlib
 
-from advent_of_code.twentytwentythree import dayone, daythree, daytwo, dayfour
+from advent_of_code.twentytwentythree import dayone, daythree, daytwo, dayfour, dayfive
 
 
 def test_dayOne_puzzleOne():
@@ -55,3 +55,23 @@ def test_dayFour_puzzleTwo():
     p = dayfour.PuzzleTwo(pathlib.Path("data/2023/4/input.txt"))
 
     assert p.run() == 6420979
+
+
+def test_dayFive_puzzleOne():
+    p = dayfive.PuzzleOne(pathlib.Path("data/2023/5/example-input.txt"))
+
+    assert p.run() == 35
+
+    p = dayfive.PuzzleOne(pathlib.Path("data/2023/5/input.txt"))
+
+    assert p.run() == 57075758
+
+
+def test_dayFive_puzzleTwo():
+    p = dayfive.PuzzleTwo(pathlib.Path("data/2023/5/example-input.txt"))
+
+    assert p.run() == 46
+
+    p = dayfive.PuzzleTwo(pathlib.Path("data/2023/5/input.txt"))
+
+    assert p.run() == 31161857
