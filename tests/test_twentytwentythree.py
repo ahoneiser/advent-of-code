@@ -1,7 +1,14 @@
 import pathlib
 from unittest import TestCase
 
-from advent_of_code.twentytwentythree import dayfive, dayfour, dayone, daythree, daytwo
+from advent_of_code.twentytwentythree import (
+    dayfive,
+    dayfour,
+    dayone,
+    daysix,
+    daythree,
+    daytwo,
+)
 
 
 class TestDayOne(TestCase):
@@ -112,3 +119,25 @@ class TestDayFive(TestCase):
         p = dayfive.PuzzleTwo(pathlib.Path("data/2023/5/input.txt"))
 
         assert p.run() == 31161857
+
+
+class TestDaySix(TestCase):
+    def test_puzzle_one_example(self):
+        p = daysix.PuzzleOne(pathlib.Path("data/2023/6/example-input.txt"))
+
+        assert p.run() == 288
+
+    def test_puzzle_one(self):
+        p = daysix.PuzzleOne(pathlib.Path("data/2023/6/input.txt"))
+
+        assert p.run() == 160816
+
+    def test_puzzle_two_example(self):
+        p = daysix.PuzzleTwo(pathlib.Path("data/2023/6/example-input.txt"))
+
+        assert p.run() == 71503
+
+    def test_puzzle_two(self):
+        p = daysix.PuzzleTwo(pathlib.Path("data/2023/6/input.txt"))
+
+        assert p.run() == 46561107
