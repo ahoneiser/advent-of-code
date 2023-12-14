@@ -1,6 +1,5 @@
 import math
 import re
-import sys
 
 from . import Puzzle
 
@@ -10,12 +9,7 @@ class PuzzleOne(Puzzle):
         super().__init__(fh)
 
     def run(self):
-        board = []
-
-        with self._fh.open("r") as fh:
-            for line in fh.readlines():
-                board.append(line.rstrip())
-
+        board = self._data.splitlines()
         chars = {}
 
         for x in range(len(board)):
@@ -42,12 +36,7 @@ class PuzzleTwo(Puzzle):
         super().__init__(fh)
 
     def run(self):
-        board = []
-
-        with self._fh.open("r") as fh:
-            for line in fh.readlines():
-                board.append(line.rstrip())
-
+        board = self._data.splitlines()
         chars = {}
 
         for x in range(len(board)):

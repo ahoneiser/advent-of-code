@@ -10,17 +10,16 @@ class PuzzleOne(Puzzle):
     def run(self):
         result = 0
 
-        with self._fh.open("r") as fh:
-            for line in fh.readlines():
-                digits = []
+        for line in self._data.splitlines():
+            digits = []
 
-                for char in line.rstrip():
-                    if char.isdigit():
-                        digits.append(char)
+            for char in line.rstrip():
+                if char.isdigit():
+                    digits.append(char)
 
-                result += int(f"{digits[0]}{digits[-1]}")
+            result += int(f"{digits[0]}{digits[-1]}")
 
-            return result
+        return result
 
 
 class PuzzleTwo(Puzzle):
@@ -40,23 +39,22 @@ class PuzzleTwo(Puzzle):
         super().__init__(fh)
 
     def run(self):
-        with self._fh.open("r") as fh:
-            numbers = []
+        numbers = []
 
-            for line in fh.readlines():
-                digits = []
+        for line in self._data.splitlines():
+            digits = []
 
-                pattern = re.compile(
-                    r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))"
-                )
+            pattern = re.compile(
+                r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))"
+            )
 
-                for match in pattern.findall(line.rstrip()):
-                    if match.isdigit():
-                        digits.append(int(match))
+            for match in pattern.findall(line.rstrip()):
+                if match.isdigit():
+                    digits.append(int(match))
 
-                    else:
-                        digits.append(self.__map[match])
+                else:
+                    digits.append(self.__map[match])
 
-                numbers.append(int(f"{digits[0]}{digits[-1]}"))
+            numbers.append(int(f"{digits[0]}{digits[-1]}"))
 
-            return sum(numbers)
+        return sum(numbers)

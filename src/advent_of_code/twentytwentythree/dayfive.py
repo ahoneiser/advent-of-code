@@ -1,27 +1,20 @@
-import re
-import sys
-
 from . import Puzzle
 
 
 class PuzzleOne(Puzzle):
-    def __init__(self, fh):
-        super().__init__(fh)
+    def __init__(self, input_file):
+        super().__init__(input_file)
 
     def run(self):
         location_number = int()
-        data = None
+        data_chunks = self._data.split("\n\n")
 
-        with self._fh.open("r") as fh:
-            data = fh.read().rstrip()
-
-        chunks = data.split("\n\n")
         maps = {
             i: [[int(y) for y in x.split()] for x in m.split("\n")[1:]]
-            for i, m in enumerate(data.split("\n\n")[1:])
+            for i, m in enumerate(data_chunks[1:])
         }
 
-        for seed in [int(x) for x in chunks[0].split(":")[1].split()]:
+        for seed in [int(x) for x in data_chunks[0].split(":")[1].split()]:
             kicker = seed
 
             for next_map in maps:
@@ -38,16 +31,11 @@ class PuzzleOne(Puzzle):
 
 
 class PuzzleTwo(Puzzle):
-    def __init__(self, fh):
-        super().__init__(fh)
+    def __init__(self, input_file):
+        super().__init__(input_file)
 
     def run(self):
-        data = None
-
-        with self._fh.open("r") as fh:
-            data = fh.read().rstrip()
-
-        data_chunks = data.split("\n\n")
+        data_chunks = self._data.split("\n\n")
 
         seed_inputs = [int(x) for x in data_chunks[0].split(":")[1].split()]
         seed_ranges = [

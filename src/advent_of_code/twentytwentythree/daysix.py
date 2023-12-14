@@ -1,20 +1,14 @@
 import re
-import sys
 
 from . import Puzzle
 
 
 class PuzzleOne(Puzzle):
-    def __init__(self, fh):
-        super().__init__(fh)
+    def __init__(self, input_file):
+        super().__init__(input_file)
 
     def run(self):
-        data = None
-
-        with self._fh.open("r") as fh:
-            data = fh.read().rstrip()
-
-        durations, records = data.splitlines()
+        durations, records = self._data.splitlines()
 
         durations = list(map(int, re.findall(r"\d+", durations)))
         records = list(map(int, re.findall(r"\d+", records)))
@@ -36,16 +30,11 @@ class PuzzleOne(Puzzle):
 
 
 class PuzzleTwo(Puzzle):
-    def __init__(self, fh):
-        super().__init__(fh)
+    def __init__(self, input_file):
+        super().__init__(input_file)
 
     def run(self):
-        data = None
-
-        with self._fh.open("r") as fh:
-            data = fh.read().rstrip()
-
-        durations, records = data.splitlines()
+        durations, records = self._data.splitlines()
 
         duration = int("".join(re.findall(r"\d+", durations)))
         record = int("".join(re.findall(r"\d+", records)))

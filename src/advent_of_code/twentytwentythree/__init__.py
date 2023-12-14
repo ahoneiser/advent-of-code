@@ -1,3 +1,9 @@
+import pathlib
+
+
 class Puzzle:
-    def __init__(self, fh):
-        self._fh = fh
+    _data = None
+
+    def __init__(self, input_file):
+        with pathlib.Path(input_file).open("r") as fh:
+            self._data = fh.read().rstrip()

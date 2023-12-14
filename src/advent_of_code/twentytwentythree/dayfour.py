@@ -1,5 +1,4 @@
 import re
-import sys
 
 from . import Puzzle
 
@@ -11,28 +10,27 @@ class PuzzleOne(Puzzle):
     def run(self):
         total_points = 0
 
-        with self._fh.open("r") as fh:
-            for line in fh.readlines():
-                card, numbers = line.rstrip().split(":")
-                winning_numbers, numbers = numbers.split("|")
+        for line in self._data.splitlines():
+            card, numbers = line.rstrip().split(":")
+            winning_numbers, numbers = numbers.split("|")
 
-                winners = []
-                points = 0
+            winners = []
+            points = 0
 
-                for number in numbers.split():
-                    if number in winning_numbers.split():
-                        winners.append(number)
+            for number in numbers.split():
+                if number in winning_numbers.split():
+                    winners.append(number)
 
-                for winner in winners:
-                    if points == 0:
-                        points = 1
+            for winner in winners:
+                if points == 0:
+                    points = 1
 
-                    else:
-                        points = points * 2
+                else:
+                    points = points * 2
 
-                total_points += points
+            total_points += points
 
-            return total_points
+        return total_points
 
 
 class PuzzleTwo(Puzzle):
@@ -44,22 +42,21 @@ class PuzzleTwo(Puzzle):
 
         wins = {}
 
-        with self._fh.open("r") as fh:
-            for line in fh.readlines():
-                card, numbers = line.rstrip().split(":")
-                winning_numbers, numbers = numbers.split("|")
+        for line in self._data.splitlines():
+            card, numbers = line.rstrip().split(":")
+            winning_numbers, numbers = numbers.split("|")
 
-                card_number = int(re.search(r"(?P<number>\d+)$", card).group("number"))
+            card_number = int(re.search(r"(?P<number>\d+)$", card).group("number"))
 
-                original_scratchcards[card_number] = {
-                    "winning_numbers": winning_numbers.split(),
-                    "numbers": numbers.split(),
-                    "winners": [],
-                }
+            original_scratchcards[card_number] = {
+                "winning_numbers": winning_numbers.split(),
+                "numbers": numbers.split(),
+                "winners": [],
+            }
 
-                for number in original_scratchcards[card_number]["numbers"]:
-                    if number in original_scratchcards[card_number]["winning_numbers"]:
-                        original_scratchcards[card_number]["winners"].append(number)
+            for number in original_scratchcards[card_number]["numbers"]:
+                if number in original_scratchcards[card_number]["winning_numbers"]:
+                    original_scratchcards[card_number]["winners"].append(number)
 
         iteration = 0
         wins[iteration] = []

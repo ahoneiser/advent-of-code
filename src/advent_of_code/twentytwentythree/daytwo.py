@@ -10,25 +10,22 @@ class PuzzleOne(Puzzle):
     def run(self, red: int = 12, green: int = 13, blue: int = 14):
         games = {}
 
-        with self._fh.open("r") as fh:
-            for _ in fh.readlines():
-                line = _.rstrip()
+        for line in self._data.splitlines():
+            game, subsets = line.split(":")
+            game_id = re.match("^Game.(?P<id>[0-9]+).*", game)["id"]
 
-                game, subsets = line.split(":")
-                game_id = re.match("^Game.(?P<id>[0-9]+).*", game)["id"]
+            if game_id not in games:
+                games[game_id] = {}
 
-                if game_id not in games:
-                    games[game_id] = {}
+            for subset in subsets.split(";"):
+                for mix in re.findall(
+                    r"(?P<num>[0-9]+).(?P<color>red|green|blue)", subset
+                ):
+                    if mix[1] not in games[game_id]:
+                        games[game_id][mix[1]] = 0
 
-                for subset in subsets.split(";"):
-                    for mix in re.findall(
-                        r"(?P<num>[0-9]+).(?P<color>red|green|blue)", subset
-                    ):
-                        if mix[1] not in games[game_id]:
-                            games[game_id][mix[1]] = 0
-
-                        if games[game_id][mix[1]] < int(mix[0]):
-                            games[game_id][mix[1]] = int(mix[0])
+                    if games[game_id][mix[1]] < int(mix[0]):
+                        games[game_id][mix[1]] = int(mix[0])
 
         id_sum = 0
 
@@ -54,25 +51,22 @@ class PuzzleTwo(Puzzle):
     def run(self, red: int = 12, green: int = 13, blue: int = 14):
         games = {}
 
-        with self._fh.open("r") as fh:
-            for _ in fh.readlines():
-                line = _.rstrip()
+        for line in self._data.splitlines():
+            game, subsets = line.split(":")
+            game_id = re.match("^Game.(?P<id>[0-9]+).*", game)["id"]
 
-                game, subsets = line.split(":")
-                game_id = re.match("^Game.(?P<id>[0-9]+).*", game)["id"]
+            if game_id not in games:
+                games[game_id] = {}
 
-                if game_id not in games:
-                    games[game_id] = {}
+            for subset in subsets.split(";"):
+                for mix in re.findall(
+                    r"(?P<num>[0-9]+).(?P<color>red|green|blue)", subset
+                ):
+                    if mix[1] not in games[game_id]:
+                        games[game_id][mix[1]] = int(mix[0])
 
-                for subset in subsets.split(";"):
-                    for mix in re.findall(
-                        r"(?P<num>[0-9]+).(?P<color>red|green|blue)", subset
-                    ):
-                        if mix[1] not in games[game_id]:
-                            games[game_id][mix[1]] = int(mix[0])
-
-                        if int(mix[0]) > games[game_id][mix[1]]:
-                            games[game_id][mix[1]] = int(mix[0])
+                    if int(mix[0]) > games[game_id][mix[1]]:
+                        games[game_id][mix[1]] = int(mix[0])
 
         return sum(
             [
